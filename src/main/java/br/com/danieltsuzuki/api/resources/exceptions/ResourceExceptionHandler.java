@@ -1,5 +1,6 @@
 package br.com.danieltsuzuki.api.resources.exceptions;
 
+import br.com.danieltsuzuki.api.services.exceptions.DataIntegratyViolationException;
 import br.com.danieltsuzuki.api.services.exceptions.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,14 @@ public class ResourceExceptionHandler {
                 LocalDateTime.now(), HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(), request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(DataIntegratyViolationException.class)
+    public ResponseEntity<StandardError> dataIntegratyViolationException(DataIntegratyViolationException ex, HttpServletRequest request){
+        StandardError error = new StandardError(
+                LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(), request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
 }
