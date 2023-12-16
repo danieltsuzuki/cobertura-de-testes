@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +24,7 @@ class UserServiceImplTest {
     public static final long ID = 1l;
     public static final String NAME = "teste";
     public static final String MAIL = "teste@mail.com";
-    public static final String NUMBER = "123";
+    public static final String PASSWORD = "123";
 
     @InjectMocks
     private UserServiceImpl service; //Cria instancia real
@@ -51,6 +53,7 @@ class UserServiceImplTest {
         assertEquals(ID, response.getId());
         assertEquals(NAME, response.getName());
         assertEquals(MAIL, response.getEmail());
+        assertEquals(PASSWORD, response.getPassword());
     }
 
     @Test
@@ -67,7 +70,18 @@ class UserServiceImplTest {
     }
 
     @Test
-    void findAll() {
+    void whenFindAllThenReturnAnListUsers() {
+        when(repository.findAll()).thenReturn(Arrays.asList(user));
+
+        List<User> response = service.findAll();
+
+        assertNotNull(response);
+        assertEquals(1, response.size());
+        assertEquals(User.class, response.get(0).getClass());
+        assertEquals(ID, response.get(0).getId());
+        assertEquals(NAME, response.get(0).getName());
+        assertEquals(MAIL, response.get(0).getEmail());
+        assertEquals(PASSWORD, response.get(0).getPassword());
     }
 
     @Test
@@ -83,9 +97,9 @@ class UserServiceImplTest {
     }
 
     private void startUser(){
-        user = new User(ID, NAME, MAIL, NUMBER);
-        dto = new UserDto(ID, NAME, MAIL, NUMBER);
-        optionalUser = Optional.of(new User(ID, NAME, MAIL, NUMBER));
+        user = new User(ID, NAME, MAIL, PASSWORD);
+        dto = new UserDto(ID, NAME, MAIL, PASSWORD);
+        optionalUser = Optional.of(new User(ID, NAME, MAIL, PASSWORD));
     }
 
 }
