@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto nao encontrado"));
     }
 
+    @Override
     public List<User> findAll(){
         return repository.findAll();
     }
@@ -42,6 +43,12 @@ public class UserServiceImpl implements UserService {
     public User update(UserDto dto) {
         findByEmail(dto);
         return repository.save(mapper.map(dto, User.class));
+    }
+
+    @Override
+    public void delete(Long id) {
+        findById(id);
+        repository.deleteById(id);
     }
 
     private void findByEmail(UserDto dto){
