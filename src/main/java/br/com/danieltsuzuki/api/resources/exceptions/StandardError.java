@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter
-@Setter
 public class StandardError {
 
     private LocalDateTime timestamp;
