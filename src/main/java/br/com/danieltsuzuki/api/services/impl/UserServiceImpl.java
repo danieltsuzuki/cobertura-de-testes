@@ -1,9 +1,11 @@
 package br.com.danieltsuzuki.api.services.impl;
 
 import br.com.danieltsuzuki.api.domain.User;
+import br.com.danieltsuzuki.api.domain.dto.UserDto;
 import br.com.danieltsuzuki.api.repositories.UserRepository;
 import br.com.danieltsuzuki.api.services.UserService;
 import br.com.danieltsuzuki.api.services.exceptions.ObjectNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private ModelMapper mapper;
+
     @Override
     public User findById(Long id) {
         Optional<User> obj = repository.findById(id);
@@ -24,6 +29,11 @@ public class UserServiceImpl implements UserService {
 
     public List<User> findAll(){
         return repository.findAll();
+    }
+
+    @Override
+    public User create(UserDto dto) {
+        return repository.save(mapper.map(dto, User.class));
     }
 
 }
