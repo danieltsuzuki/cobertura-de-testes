@@ -3,7 +3,7 @@ package br.com.danieltsuzuki.api.services.impl;
 import br.com.danieltsuzuki.api.domain.User;
 import br.com.danieltsuzuki.api.domain.dto.UserDto;
 import br.com.danieltsuzuki.api.repositories.UserRepository;
-import br.com.danieltsuzuki.api.services.exceptions.DataIntegratyViolationException;
+import br.com.danieltsuzuki.api.services.exceptions.DataIntegrityViolationException;
 import br.com.danieltsuzuki.api.services.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -107,7 +107,7 @@ class UserServiceImplTest {
             optionalUser.get().setEmail(MAIL);
             User response = service.create(dto);
         } catch (Exception ex){
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals("Email ja cadastrado no sistema", ex.getMessage());
         }
 
@@ -135,7 +135,7 @@ class UserServiceImplTest {
             optionalUser.get().setEmail(MAIL);
             User response = service.create(dto);
         } catch (Exception ex){
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals("Email ja cadastrado no sistema", ex.getMessage());
         }
 
