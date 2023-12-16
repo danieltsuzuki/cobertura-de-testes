@@ -38,9 +38,15 @@ public class UserServiceImpl implements UserService {
         return repository.save(mapper.map(dto, User.class));
     }
 
+    @Override
+    public User update(UserDto dto) {
+        findByEmail(dto);
+        return repository.save(mapper.map(dto, User.class));
+    }
+
     private void findByEmail(UserDto dto){
         Optional<User> user = repository.findByEmail(dto.getEmail());
-        if(user.isPresent()){
+        if(user.isPresent() && user.get().getId().equals(dto.getId())){
             throw new DataIntegratyViolationException("Email ja cadastrado no sistema");
         }
     }
