@@ -14,7 +14,8 @@ Recurso: users
 <h2>Tecnologias utilizadas:</h2>
 
 - Java 17 
-- Spring Boot 
+- Spring Boot
+- Maven
 - JUnit 5 
 - Mockito 
 - Lombok 
