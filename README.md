@@ -25,6 +25,8 @@ Recurso: users
 
 <h2>Como executar o projeto:</h2>
 
+Certifique se que seu computador tenha instalado o java 17 e maven, após siga os seguintes passos.
+
 1. Clone o projeto do GitHub:<br>```git clone https://github.com/danieltsuzuki/cobertura-de-testes.git```
 2. Entre na pasta do projeto:<br>```cd cobertura-de-testes```
 3. Instale as dependências do projeto:<br>```mvn clean install```
