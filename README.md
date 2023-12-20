@@ -41,6 +41,77 @@ A documentação da API está disponível no seguinte endpoint:
 
 http://localhost:8080/swagger-ui.html
 
+<h2>>Endpoints</h2>
+
+- GET /users<br>Requisição: ```GET http://localhost:8080/users```<br>Resposta:
+  ```
+    [
+      {
+        "id": 1,
+        "name": "Fulano de Tal",
+        "email": "fulano@example.com",
+        "password": "123456"
+      },
+      {
+        "id": 2,
+        "name": "Beltrano de Tal",
+        "email": "beltrano@example.com",
+        "password": "789012"
+      }
+    ]
+  ```
+
+- GET /users/{id}<br>Requisição: ```GET /users/1```<br>Resposta:
+  ```
+    {
+      "id": 1,
+      "name": "Fulano de Tal",
+      "email": "fulano@example.com",
+      "password": "123456"
+    }
+  ```
+- POST /users<br>Requisição:
+  ```
+    POST http://localhost:8080/users
+    Content-Type: application/json
+                              
+    {
+      "name": "Ciclano de Tal",
+      "email": "ciclano@example.com",
+      "password": "345678"
+    }
+  ```
+  Resposta:
+  ```
+    {
+      "id": 3,
+      "name": "Ciclano de Tal",
+      "email": "ciclano@example.com",
+      "password": "345678"
+    }
+  ```
+- PUT /users/{id}:<br>Requisição
+  ```
+    PUT http://localhost:8080/users/2
+    Content-Type: application/json
+    
+    {
+      "name": "Beltrano de Tal alterado",
+      "email": "beltranoalterado@example.com",
+      "password": "987654"
+    }
+  ```
+  Resposta:
+  ```
+    {
+      "id": 2,
+      "name": "Beltrano de Tal alterado",
+      "email": "beltranoalterado@example.com",
+      "password": "987654"
+    }
+  ```
+- DELETE /users/{id}<br>Requisição: ```DELETE http://localhost:8080/users/3```<br>Resposta: ```Status Code: 204```
+
 <h2>Testes:</h2>
 
 Os testes da API estão localizados no diretório src/test/java. Para executar os testes, execute o seguinte comando:<br>```mvn test```
