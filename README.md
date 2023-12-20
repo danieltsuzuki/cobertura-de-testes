@@ -45,6 +45,7 @@ http://localhost:8080/swagger-ui.html
 
 - GET /users<br>Requisição: ```GET http://localhost:8080/users```<br>Resposta:
   ```
+    Status Code: 200
     [
       {
         "id": 1,
@@ -63,6 +64,7 @@ http://localhost:8080/swagger-ui.html
 
 - GET /users/{id}<br>Requisição: ```GET /users/1```<br>Resposta:
   ```
+    Status Code: 200
     {
       "id": 1,
       "name": "Fulano de Tal",
@@ -83,12 +85,7 @@ http://localhost:8080/swagger-ui.html
   ```
   Resposta:
   ```
-    {
-      "id": 3,
-      "name": "Ciclano de Tal",
-      "email": "ciclano@example.com",
-      "password": "345678"
-    }
+    Status Code: 201
   ```
 - PUT /users/{id}:<br>Requisição
   ```
@@ -103,6 +100,7 @@ http://localhost:8080/swagger-ui.html
   ```
   Resposta:
   ```
+    Status Code: 200
     {
       "id": 2,
       "name": "Beltrano de Tal alterado",
