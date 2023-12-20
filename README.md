@@ -25,7 +25,7 @@ Recurso: users
 
 <h2>Como executar o projeto:</h2>
 
-1. Clone o projeto do GitHub:<br>```git clone https://github.com/bard-ai/api-rest-com-cobertura-de-testes-100.git```
+1. Clone o projeto do GitHub:<br>```git clone https://github.com/danieltsuzuki/cobertura-de-testes.git```
 2. Entre na pasta do projeto:<br>```cd cobertura-de-testes```
 3. Instale as dependências do projeto:<br>```mvn clean install```
 4. Execute a aplicação:<br>```mvn spring-boot:run```
