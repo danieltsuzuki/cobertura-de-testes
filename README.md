@@ -38,7 +38,7 @@ Documentação da API:
 
 A documentação da API está disponível no seguinte endpoint:
 
-https://localhost:8080/swagger-ui.html
+http://localhost:8080/swagger-ui.html
 
 <h2>Testes:</h2>
 
